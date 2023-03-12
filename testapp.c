@@ -21,14 +21,15 @@ void main(void){
  	MyFIFOInit(&s1, numEle);
  	
  	char c;
-	int num;
+	int num,elem;
 		printf("\nMenu de opçoes: \n");
  		printf("Press 1 - Inserir elemento\n");
 		printf("Press 2 - Remover elemento\n");
 		printf("Press 3 - Verificar se a Memória está Cheia\n");
 		printf("Press 4 - Verificar se a Memória está Vazio\n");
-		printf("Press 5 - Print do Conteúdo do FIFO\n");
-		
+		printf("Press 5 - Print do Elemento inserido há mais tempo\n");
+		printf("Press 6 - Print do Número de Elementos do FIFO\n");
+		printf("Press 7 - Print do Conteúdo do FIFO\n");
 		
 	while(1){
 		printf("\nNova açao: ");
@@ -64,7 +65,19 @@ void main(void){
 					printf("\nJá foram Inseridos Elementos ao FIFO\n");
 				}
 				break;	
-			case '5':	// Print do Conteúdo do FIFO
+			case '5':	//Print do Elemento inserido há mais tempo
+				if(FIFOEmpty(&s1)){
+					printf("\nEspaço de Memória Vazio!\n");
+				}
+				else{
+				elem = MyFIFOPeep(s1);
+				printf("O valor do elemento mais antigo do FIFO é: %d\n",elem);
+				}
+				break;
+			case '6':
+				printf("O FIFO tem %d Elelemtos Inseridos!\n",MyFIFOSize(s1));
+				break;
+			case '7':	// Print do Conteúdo do FIFO
 				for(int i = 0;i<numEle;i++){
  				printf("%d\n",s1.val[i]);
  				}

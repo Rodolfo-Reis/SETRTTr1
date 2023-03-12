@@ -14,6 +14,8 @@ void MyFIFOInit(FIFO *nome, int tam);
 void MyFIFOInsert(FIFO *nome, int valor);
 bool FIFOFull(FIFO *nome);
 bool FIFOEmpty(FIFO *nome);
+int MyFIFOPeep(FIFO nome);
+int MyFIFOSize(FIFO nome);
 #endif
 
 

@@ -14,11 +14,9 @@ void MyFIFOInit(FIFO *nome, int tam){
 	for(int i=0;i<tam;i++){
 		MyFIFOInsert(nome,0);
 	}
-	// resetar o idxUlt para apontar para o primeiro elemento
-	nome->idxUlt = 0;
 	// resetar ponteiros de posiçao para diferentes elementos do espaço de mem
-	nome->idxPrim = 0;  
-	nome->idxUlt = 0;
+	nome->idxPrim = 0;  // posiçao do elemento inserido há mais tempo
+	nome->idxUlt = 0;  // posiçao do elemento inserido há menos tempo	
 	// guardar o número de elementos 
 	nome->elementos = tam;
 	// resetar numero de elementos inserido
@@ -68,6 +66,14 @@ void MyFIFORemove(FIFO *nome){
 // retorna false se nao estiver
 bool FIFOEmpty(FIFO *nome){
 	return (nome->nIns == 0);
+}
+
+int MyFIFOPeep(FIFO nome){
+		return(nome.val[nome.idxPrim]);		
+}
+
+int MyFIFOSize(FIFO nome){
+	return(nome.nIns);
 }
 
 
