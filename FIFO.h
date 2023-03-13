@@ -12,8 +12,8 @@ typedef struct FIFO{
  
 void MyFIFOInit(FIFO *nome, int tam);
 void MyFIFOInsert(FIFO *nome, int valor);
-bool FIFOFull(FIFO *nome);
-bool FIFOEmpty(FIFO *nome);
+bool FIFOFull(int Ins, int tam);
+bool FIFOEmpty(int Ins);
 int MyFIFOPeep(FIFO nome);
 int MyFIFOSize(FIFO nome);
 #endif

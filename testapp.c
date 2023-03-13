@@ -25,62 +25,31 @@ void main(void){
 		printf("\nMenu de opçoes: \n");
  		printf("Press 1 - Inserir elemento\n");
 		printf("Press 2 - Remover elemento\n");
-		printf("Press 3 - Verificar se a Memória está Cheia\n");
-		printf("Press 4 - Verificar se a Memória está Vazio\n");
-		printf("Press 5 - Print do Elemento inserido há mais tempo\n");
-		printf("Press 6 - Print do Número de Elementos do FIFO\n");
-		printf("Press 7 - Print do Conteúdo do FIFO\n");
+		printf("Press 3 - Print do Elemento inserido há mais tempo\n");
+		printf("Press 4 - Print do Número de Elementos do FIFO\n");
+		printf("Press 5 - Print do Conteúdo do FIFO\n");
 		
 	while(1){
 		printf("\nNova açao: ");
 		scanf("%c",&c);
  		switch(c){
  			case '1':
- 				//Verificar se FIFO está cheia
-				if(FIFOFull(&s1)){
-					printf("\n Espaço de Memória Cheio!\n");
-				}
-				else{
-					printf("\nValor a Inserir: ");
-					scanf("%d",&num);
-					MyFIFOInsert(&s1,num);
-				}
+				printf("\nValor a Inserir: ");
+				scanf("%d",&num);
+				MyFIFOInsert(&s1,num);
 				break;
 			case '2':	//Remover elemento
 				MyFIFORemove(&s1);
 				break;
-			case '3':	//Verificar se a Memória está Cheia
-				if(FIFOFull(&s1)){
-					printf("\nEspaço de Memória Cheio!\n");
-				}
-				else{
-					printf("\nExiste Espaço Livre no Espaço de Memória !\n");
-				}
-				break;
-			case '4':	//Verificar se a Memória está Vazio
-				if(FIFOEmpty(&s1)){
-					printf("\nEspaço de Memória Vazio!\n");
-				}
-				else{
-					printf("\nJá foram Inseridos Elementos ao FIFO\n");
-				}
-				break;	
-			case '5':	//Print do Elemento inserido há mais tempo
-				if(FIFOEmpty(&s1)){
-					printf("\nEspaço de Memória Vazio!\n");
-				}
-				else{
+			case '3':	//Print do Elemento inserido há mais tempo
 				elem = MyFIFOPeep(s1);
-				printf("O valor do elemento mais antigo do FIFO é: %d\n",elem);
-				}
+				//printf("O valor do elemento mais antigo do FIFO é: %d\n",elem);
 				break;
-			case '6':
+			case '4':
 				printf("O FIFO tem %d Elelemtos Inseridos!\n",MyFIFOSize(s1));
 				break;
-			case '7':	// Print do Conteúdo do FIFO
-				for(int i = 0;i<numEle;i++){
- 				printf("%d\n",s1.val[i]);
- 				}
+			case '5':	// Print do Conteúdo do FIFO
+				MyFIFOPrint(s1);
  		}
 		
  	}

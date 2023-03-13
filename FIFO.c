@@ -26,8 +26,9 @@ void MyFIFOInit(FIFO *nome, int tam){
 
 //Funçao para Inserir elemento no FIFO
 void MyFIFOInsert(FIFO *nome, int valor){
-	 if(FIFOFull(nome)){
-	 	printf("\n Espaço de Memória Cheio!\n");
+	 if(FIFOFull(nome->nIns,nome->elementos)){
+	 	printf("\nEspaço de Memória Cheio!\n");
+		printf("Elemento Não Inserido!");
 	 }
 	 else {
 	 	nome->val[nome->idxUlt] = valor;
@@ -41,22 +42,23 @@ void MyFIFOInsert(FIFO *nome, int valor){
 // Função para verificar se o espaço de memoria está cheio
 // retorna true se estiver cheio
 // retorna false se nao estiver
-bool FIFOFull(FIFO *nome){
-	return (nome->nIns == nome->elementos);
+bool FIFOFull(int Ins, int tam){
+	return (Ins == tam);
 }
 
 // Funçao para retirar elemento que está há mais tempo no FIFO
 void MyFIFORemove(FIFO *nome){
 	// Verificar se o FIFO está vazio
-	if(FIFOEmpty(nome)){
-		printf("\n Espaço de Memória Vazio!\n");
+	if(FIFOEmpty(nome->nIns)){
+		printf("\nEspaço de Memória Vazio!\n");
 	}
 	else{
-	// reseta o valor do elemento que está há mais tempo
-	nome->val[nome->idxPrim]= 0;
-	// atualiza o ponteiro para o primeiro elemento
-	nome->idxPrim = (nome->idxPrim + 1) % (nome->elementos +1);
-	nome->nIns--;
+		// reseta o valor do elemento que está há mais tempo
+		nome->val[nome->idxPrim]= 0;
+		// atualiza o ponteiro para o primeiro elemento
+		nome->idxPrim = (nome->idxPrim + 1) % (nome->elementos +1);
+		nome->nIns--;
+		printf("\nElemento removido com Sucesso!\n");
 	}
 	
 }
@@ -64,16 +66,36 @@ void MyFIFORemove(FIFO *nome){
 // Função para verificar se o espaço de memoria está vazio
 // retorna true se estiver vazio
 // retorna false se nao estiver
-bool FIFOEmpty(FIFO *nome){
-	return (nome->nIns == 0);
+bool FIFOEmpty(int Ins){
+	return (Ins == 0);
 }
 
+//Função para dar print do primeiro elemento inserido sem retiralo
 int MyFIFOPeep(FIFO nome){
+	if(FIFOEmpty(nome.nIns)){
+		printf("\nEspaço de Memória Vazio!\n");
+		return 0;
+	}
+	else{
+		printf("O valor do elemento mais antigo do FIFO é: %d\n",nome.val[nome.idxPrim]);
 		return(nome.val[nome.idxPrim]);		
+	}
 }
 
+// Funçao para dar print do Numero de elementos inseridos
 int MyFIFOSize(FIFO nome){
 	return(nome.nIns);
 }
 
+// Funçao para dar print do conteudo do FIFO
+void MyFIFOPrint(FIFO nome){
+	if(FIFOEmpty(nome.nIns)){
+		printf("\n Espaço de Memória Vazio!\n");
+	}
+	else{
+	for(int i = 0;i<nome.nIns;i++){
+ 				printf("%d\n",nome.val[((nome.idxPrim + i) % (nome.elementos +1))]);
+ 				}
+	}
+}
 
