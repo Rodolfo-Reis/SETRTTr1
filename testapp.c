@@ -8,9 +8,8 @@
  * 
  * @author Rodolfo Oliveira, NºMec: 88919
  * @date 14 Março 2023
- * @bug Imprime no terminal "Nova ação: ERRO" logo após ser executada uma ação e sem que 
- * se tenha clicado em alguma tecla para definar uma ação.
  * 
+ * @bug Nenhum bug conhecido
  * 
 */
 /* Includes */
@@ -24,18 +23,17 @@
  * implementadas para o FIFO. Por exemplo, Inserção de elementos, remoção de elementos,
  * Print do elemento inserido há mais tempo, Número total de elementos e print do conteúdo do FIFO.
  * 
- * @return sempre retorna strings
+ * @return sempre retorna 0
  * 
 */
 
-void main(){
+int main(void){
  	/* Inicializaçao de variaveis*/
 	struct FIFO s1;
  	int numEle = 10;
  	MyFIFOInit(&s1, numEle);
- 	
  	char c;
-	int num,elem;
+ 	int num,elem;
 	/*Menu de opçoes de açoes*/
 		printf("\nMenu de opçoes: \n");
  		printf("Press 1 - Inserir elemento\n");
@@ -46,12 +44,14 @@ void main(){
 		
 	while(1){
 		printf("\nNova açao: ");
-		scanf("%c",&c);
-		/*decisao de qual opçao escoolhida pelo utilizador*/
+		do{
+		scanf("%c", &c);
+		}while((c<'0' || c>'5'));
+		/*decisao de qual opçao escolhida pelo utilizador*/
  		switch(c){
  			case '1':
 				printf("\nValor a Inserir: ");
-				scanf("%d",&num);
+				scanf("%d", &num);
 				MyFIFOInsert(&s1,num);
 				break;
 			case '2':	//Remover elemento
@@ -74,5 +74,6 @@ void main(){
  		}
 		
  	}
+	return 0;
 }
 

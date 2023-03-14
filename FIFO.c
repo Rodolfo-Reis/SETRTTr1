@@ -25,10 +25,11 @@ void MyFIFOInit(FIFO *nome, int tam){
 }
 
 //Funçao para Inserir elemento no FIFO
-void MyFIFOInsert(FIFO *nome, int valor){
+int MyFIFOInsert(FIFO *nome, int valor){
 	 if(FIFOFull(nome->nIns,nome->elementos)){
 	 	printf("\nEspaço de Memória Cheio!\n");
 		printf("Elemento Não Inserido!");
+		return 1;
 	 }
 	 else {
 	 	nome->val[nome->idxUlt] = valor;
@@ -36,6 +37,7 @@ void MyFIFOInsert(FIFO *nome, int valor){
 	 	// logo idxUlt atinge o tam na seguinte incrementação toma o valor 0
 	 	nome->idxUlt = (nome->idxUlt + 1) % (nome->elementos +1);
 	 	nome->nIns++;
+		return 0;
 	 } 
 }
 
@@ -47,10 +49,11 @@ bool FIFOFull(int Ins, int tam){
 }
 
 // Funçao para retirar elemento que está há mais tempo no FIFO
-void MyFIFORemove(FIFO *nome){
+int MyFIFORemove(FIFO *nome){
 	// Verificar se o FIFO está vazio
 	if(FIFOEmpty(nome->nIns)){
 		printf("\nEspaço de Memória Vazio!\n");
+		return 1;
 	}
 	else{
 		// reseta o valor do elemento que está há mais tempo
@@ -59,6 +62,7 @@ void MyFIFORemove(FIFO *nome){
 		nome->idxPrim = (nome->idxPrim + 1) % (nome->elementos +1);
 		nome->nIns--;
 		printf("\nElemento removido com Sucesso!\n");
+		return 0;
 	}
 	
 }
@@ -89,14 +93,16 @@ int MyFIFOSize(FIFO nome){
 }
 
 // Funçao para dar print do conteudo do FIFO
-void MyFIFOPrint(FIFO nome){
+int MyFIFOPrint(FIFO nome){
 	if(FIFOEmpty(nome.nIns)){
 		printf("\nEspaço de Memória Vazio!\n");
+		return 1;
 	}
 	else{
-	for(int i = 0;i<nome.nIns;i++){
+		for(int i = 0;i<nome.nIns;i++){
  				printf("%d\n",nome.val[((nome.idxPrim + i) % (nome.elementos +1))]);
  				}
+		return 0;
 	}
 }
 

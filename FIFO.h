@@ -65,9 +65,9 @@ void MyFIFOInit(FIFO *nome, int tam);
  * 
  * @param <b>*nome</b> ponteiro para o endereço que contém a estrutura FIFO criada pelo utilizador
  * 
- *  
+ *  @return 0 se o elemento foi inserido, 1 se o FIFO está cheio e não inseriu o elemento
 */
-void MyFIFOInsert(FIFO *nome, int valor);
+int MyFIFOInsert(FIFO *nome, int valor);
 
 /**
  * @brief Função de remover o elemento há mais tempo inserido
@@ -79,9 +79,10 @@ void MyFIFOInsert(FIFO *nome, int valor);
  * nIns que indica o número de elementos inseridos.
  * 
  * @param <b>*nome</b> pendereço que contém a estrutura FIFO criada pelo utilizador
- * 
+ *
+ * @return 0 se o elemento foi removido, 1 se o FIFO está vazio e não foi eliminado nenhum elemento  
 */
-void MyFIFORemove(FIFO *nome);
+int MyFIFORemove(FIFO *nome);
 
 /**
  * @brief Função que verifica-se o FIFO está cheio
@@ -117,6 +118,8 @@ bool FIFOEmpty(int Ins);
  * @param <b>nome</b> Estrutura de dados inicializada pelo utilizador
  * 
  * @return 0 caso o FIFO esteja vazio, ou caso tenha algum elemento inserido o valor do elemento inserido há mais tempo 
+ * 
+ * @bug se o FIFO estiver vaizo retorna 0 mas se o último elemento inserido for 0 também retorna 0
 */
 int MyFIFOPeep(FIFO nome);
 
@@ -128,6 +131,7 @@ int MyFIFOPeep(FIFO nome);
  * @param <b>nome</b> Estrutura de dados inicializada pelo utilizador
  * 
  * @return Número total de elementos 
+ * 
  * 
 */
 
@@ -141,9 +145,9 @@ int MyFIFOSize(FIFO nome);
  * 
  * @param <b>nome</b> Estrutura de dados inicializada pelo utilizador
  * 
- * @return Print dos valores inserido no FIFO
+ * @return 0 se o conteúdo for imprimido, 1 se o FIFO estiver vazio
 */
-void MyFIFOPrint(FIFO nome);
+int MyFIFOPrint(FIFO nome);
 #endif
 
 

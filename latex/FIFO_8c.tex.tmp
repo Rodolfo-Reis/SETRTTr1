@@ -12,11 +12,11 @@ Include dependency graph for F\+I\+F\+O.\+c\+:
 \item 
 void \mbox{\hyperlink{FIFO_8c_acdc5a00994c4c419a67c13ad5f8ee668}{My\+F\+I\+F\+O\+Init}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$nome, int tam)
 \begin{DoxyCompactList}\small\item\em Função de Inicialização dos parâmetros da Estrutura de dados referente ao \mbox{\hyperlink{structFIFO}{F\+I\+FO}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{FIFO_8c_a9376dacb55112a82bac1467c1f1c980b}{My\+F\+I\+F\+O\+Insert}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$nome, int valor)
+int \mbox{\hyperlink{FIFO_8c_ac2527baab96a550ae4c6fd614a675ab2}{My\+F\+I\+F\+O\+Insert}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$nome, int valor)
 \begin{DoxyCompactList}\small\item\em Função de inserção de elementos no \mbox{\hyperlink{structFIFO}{F\+I\+FO}}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{FIFO_8c_a1a84612689ea49922c97ef89020a74df}{F\+I\+F\+O\+Full}} (int Ins, int tam)
 \begin{DoxyCompactList}\small\item\em Função que verifica-\/se o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} está cheio. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{FIFO_8c_a891caa833218d0d66a23777c59c9b53e}{My\+F\+I\+F\+O\+Remove}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$nome)
+int \mbox{\hyperlink{FIFO_8c_ae0a0177ab035b9ac5d24c6c74cbf50a1}{My\+F\+I\+F\+O\+Remove}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$nome)
 \begin{DoxyCompactList}\small\item\em Função de remover o elemento há mais tempo inserido. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{FIFO_8c_a17fe7799e02ef89ba045161bb87ef74a}{F\+I\+F\+O\+Empty}} (int Ins)
 \begin{DoxyCompactList}\small\item\em Função que verifica-\/se o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} está vazio. \end{DoxyCompactList}\item 
@@ -24,7 +24,7 @@ int \mbox{\hyperlink{FIFO_8c_a9361e817f419f9122ff4e25a0f3b6df1}{My\+F\+I\+F\+O\+
 \begin{DoxyCompactList}\small\item\em Retorna o elemento inserido há mais tempo sem o remover. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{FIFO_8c_adfc7db32cbea69847660ed87d33f0d74}{My\+F\+I\+F\+O\+Size}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} nome)
 \begin{DoxyCompactList}\small\item\em Tamanho do \mbox{\hyperlink{structFIFO}{F\+I\+FO}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{FIFO_8c_afb83cbfcbee10ba735979ea94a39554f}{My\+F\+I\+F\+O\+Print}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} nome)
+int \mbox{\hyperlink{FIFO_8c_ab548e2fb6eeec93077a4e649791521c0}{My\+F\+I\+F\+O\+Print}} (\mbox{\hyperlink{structFIFO}{F\+I\+FO}} nome)
 \begin{DoxyCompactList}\small\item\em Imprime o conteúdo do \mbox{\hyperlink{structFIFO}{F\+I\+FO}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -90,11 +90,11 @@ Nesta função inicializa-\/se o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} que o u
 {\em $<$b$>$tam$<$/b$>$} & Número total de elementos do \mbox{\hyperlink{structFIFO}{F\+I\+FO}} inserido pelo utilizador \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{FIFO_8c_a9376dacb55112a82bac1467c1f1c980b}\label{FIFO_8c_a9376dacb55112a82bac1467c1f1c980b}} 
+\mbox{\Hypertarget{FIFO_8c_ac2527baab96a550ae4c6fd614a675ab2}\label{FIFO_8c_ac2527baab96a550ae4c6fd614a675ab2}} 
 \index{FIFO.c@{FIFO.c}!MyFIFOInsert@{MyFIFOInsert}}
 \index{MyFIFOInsert@{MyFIFOInsert}!FIFO.c@{FIFO.c}}
 \doxysubsubsection{\texorpdfstring{MyFIFOInsert()}{MyFIFOInsert()}}
-{\footnotesize\ttfamily void My\+F\+I\+F\+O\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$}]{nome,  }\item[{int}]{valor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int My\+F\+I\+F\+O\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$}]{nome,  }\item[{int}]{valor }\end{DoxyParamCaption})}
 
 
 
@@ -104,9 +104,12 @@ Nesta função efetua-\/se a inserção de números inteiros inseridos pelo util
 
 
 \begin{DoxyParams}{Parameters}
-{\em $<$b$>$$\ast$nome$<$/b$>$} & ponteiro para o endereço que contém a estrutura \mbox{\hyperlink{structFIFO}{F\+I\+FO}} criada pelo utilizador \\
+{\em $<$b$>$$\ast$nome$<$/b$>$} & ponteiro para o endereço que contém a estrutura \mbox{\hyperlink{structFIFO}{F\+I\+FO}} criada pelo utilizador\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 se o elemento foi inserido, 1 se o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} está cheio e não inseriu o elemento 
+\end{DoxyReturn}
 \mbox{\Hypertarget{FIFO_8c_a9361e817f419f9122ff4e25a0f3b6df1}\label{FIFO_8c_a9361e817f419f9122ff4e25a0f3b6df1}} 
 \index{FIFO.c@{FIFO.c}!MyFIFOPeep@{MyFIFOPeep}}
 \index{MyFIFOPeep@{MyFIFOPeep}!FIFO.c@{FIFO.c}}
@@ -125,13 +128,15 @@ Nesta função é retornado o valor do elemento para o qual o idx\+Prim aponta, 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-0 caso o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} esteja vazio, ou caso tenha algum elemento inserido o valor do elemento inserido há mais tempo 
+0 caso o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} esteja vazio, ou caso tenha algum elemento inserido o valor do elemento inserido há mais tempo
 \end{DoxyReturn}
-\mbox{\Hypertarget{FIFO_8c_afb83cbfcbee10ba735979ea94a39554f}\label{FIFO_8c_afb83cbfcbee10ba735979ea94a39554f}} 
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000002}{Bug}}]se o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} estiver vaizo retorna 0 mas se o último elemento inserido for 0 também retorna 0 \end{DoxyRefDesc}
+\mbox{\Hypertarget{FIFO_8c_ab548e2fb6eeec93077a4e649791521c0}\label{FIFO_8c_ab548e2fb6eeec93077a4e649791521c0}} 
 \index{FIFO.c@{FIFO.c}!MyFIFOPrint@{MyFIFOPrint}}
 \index{MyFIFOPrint@{MyFIFOPrint}!FIFO.c@{FIFO.c}}
 \doxysubsubsection{\texorpdfstring{MyFIFOPrint()}{MyFIFOPrint()}}
-{\footnotesize\ttfamily void My\+F\+I\+F\+O\+Print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structFIFO}{F\+I\+FO}}}]{nome }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int My\+F\+I\+F\+O\+Print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structFIFO}{F\+I\+FO}}}]{nome }\end{DoxyParamCaption})}
 
 
 
@@ -145,13 +150,13 @@ Imprime o conteúdo do \mbox{\hyperlink{structFIFO}{F\+I\+FO}} deste o elemento 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Print dos valores inserido no \mbox{\hyperlink{structFIFO}{F\+I\+FO}} 
+0 se o conteúdo for imprimido, 1 se o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} estiver vazio 
 \end{DoxyReturn}
-\mbox{\Hypertarget{FIFO_8c_a891caa833218d0d66a23777c59c9b53e}\label{FIFO_8c_a891caa833218d0d66a23777c59c9b53e}} 
+\mbox{\Hypertarget{FIFO_8c_ae0a0177ab035b9ac5d24c6c74cbf50a1}\label{FIFO_8c_ae0a0177ab035b9ac5d24c6c74cbf50a1}} 
 \index{FIFO.c@{FIFO.c}!MyFIFORemove@{MyFIFORemove}}
 \index{MyFIFORemove@{MyFIFORemove}!FIFO.c@{FIFO.c}}
 \doxysubsubsection{\texorpdfstring{MyFIFORemove()}{MyFIFORemove()}}
-{\footnotesize\ttfamily void My\+F\+I\+F\+O\+Remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$}]{nome }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int My\+F\+I\+F\+O\+Remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structFIFO}{F\+I\+FO}} $\ast$}]{nome }\end{DoxyParamCaption})}
 
 
 
@@ -161,9 +166,13 @@ Nesta função efetua-\/se a remoção do número inteiro inserido há mais temp
 
 
 \begin{DoxyParams}{Parameters}
-{\em $<$b$>$$\ast$nome$<$/b$>$} & pendereço que contém a estrutura \mbox{\hyperlink{structFIFO}{F\+I\+FO}} criada pelo utilizador \\
+{\em $<$b$>$$\ast$nome$<$/b$>$} & pendereço que contém a estrutura \mbox{\hyperlink{structFIFO}{F\+I\+FO}} criada pelo utilizador\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 se o elemento foi removido, 1 se o \mbox{\hyperlink{structFIFO}{F\+I\+FO}} está vazio e não foi eliminado nenhum elemento ~\newline
+ 
+\end{DoxyReturn}
 \mbox{\Hypertarget{FIFO_8c_adfc7db32cbea69847660ed87d33f0d74}\label{FIFO_8c_adfc7db32cbea69847660ed87d33f0d74}} 
 \index{FIFO.c@{FIFO.c}!MyFIFOSize@{MyFIFOSize}}
 \index{MyFIFOSize@{MyFIFOSize}!FIFO.c@{FIFO.c}}
