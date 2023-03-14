@@ -1,27 +1,42 @@
+
+/**
+ * @file testapp.c
+ * @brief Aplicação para teste das funcionalidades do FIFO 
+ * 
+ * Neste aplicação temos um menu de opções a que o utilizador pode recorrer para 
+ * verificar o funcionamento do FIFO.
+ * 
+ * @author Rodolfo Oliveira, NºMec: 88919
+ * @date 14 Março 2023
+ * @bug Imprime no terminal "Nova ação: ERRO" logo após ser executada uma ação e sem que 
+ * se tenha clicado em alguma tecla para definar uma ação.
+ * 
+ * 
+*/
+/* Includes */
 #include <stdio.h>
-#include "FIFO.c"
+#include "FIFO.h"
 
+/**
+ * @brief Função que propõe opções de ações que o utilizador pode efetuar para testar o FIFO
+ * 
+ * Menu de opçoes a que o utilizador pode recorrer para a testagem das funcionalidades
+ * implementadas para o FIFO. Por exemplo, Inserção de elementos, remoção de elementos,
+ * Print do elemento inserido há mais tempo, Número total de elementos e print do conteúdo do FIFO.
+ * 
+ * @return sempre retorna strings
+ * 
+*/
 
-
-void main(void){
-	// struct FIFO s1;
- 	/*
- 	MyFIFOInit(&s1, 20);
- 	for(int i = 0;i<20;i++){
- 		printf("nada: %d\n",s1.val[i]);
- 	}
- 	MyFIFOInsert(&s1, 200000);
- 
- 	for(int i = 0;i<22;i++){
- 		printf("\nnada: %d\n",s1.val[i]);
- 		MyFIFOInsert(&s1, 20000);
- 	}*/
- 	struct FIFO s1;
+void main(){
+ 	/* Inicializaçao de variaveis*/
+	struct FIFO s1;
  	int numEle = 10;
  	MyFIFOInit(&s1, numEle);
  	
  	char c;
 	int num,elem;
+	/*Menu de opçoes de açoes*/
 		printf("\nMenu de opçoes: \n");
  		printf("Press 1 - Inserir elemento\n");
 		printf("Press 2 - Remover elemento\n");
@@ -32,6 +47,7 @@ void main(void){
 	while(1){
 		printf("\nNova açao: ");
 		scanf("%c",&c);
+		/*decisao de qual opçao escoolhida pelo utilizador*/
  		switch(c){
  			case '1':
 				printf("\nValor a Inserir: ");
@@ -43,6 +59,7 @@ void main(void){
 				break;
 			case '3':	//Print do Elemento inserido há mais tempo
 				elem = MyFIFOPeep(s1);
+				printf("%d\n",elem);
 				//printf("O valor do elemento mais antigo do FIFO é: %d\n",elem);
 				break;
 			case '4':
@@ -50,6 +67,10 @@ void main(void){
 				break;
 			case '5':	// Print do Conteúdo do FIFO
 				MyFIFOPrint(s1);
+				break;
+			default:
+				printf("ERRO");
+				break;
  		}
 		
  	}

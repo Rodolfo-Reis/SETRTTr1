@@ -74,6 +74,7 @@ bool FIFOEmpty(int Ins){
 int MyFIFOPeep(FIFO nome){
 	if(FIFOEmpty(nome.nIns)){
 		printf("\nEspaço de Memória Vazio!\n");
+		printf("Não foi removido nenhum elemento!\n")
 		return 0;
 	}
 	else{
@@ -90,7 +91,7 @@ int MyFIFOSize(FIFO nome){
 // Funçao para dar print do conteudo do FIFO
 void MyFIFOPrint(FIFO nome){
 	if(FIFOEmpty(nome.nIns)){
-		printf("\n Espaço de Memória Vazio!\n");
+		printf("\nEspaço de Memória Vazio!\n");
 	}
 	else{
 	for(int i = 0;i<nome.nIns;i++){
